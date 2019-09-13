@@ -3,7 +3,7 @@ import csv
 import pandas as pd
 import numpy as np
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 # Configuring flask with sqlite db
@@ -34,6 +34,11 @@ with open('country_list.txt', 'r', encoding="utf-8") as csvfile:
     # insert bulk data frame value to database
     df.to_sql('country', con=db.engine, index=False, if_exists='replace')
 csvfile.close()
+
+# mapping index url
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 # entry point to run the application
 if __name__ == '__main__':
