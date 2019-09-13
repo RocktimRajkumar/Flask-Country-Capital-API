@@ -20,13 +20,19 @@ class Country(db.Model):
     Capital = db.Column(db.String(100), nullable=False)
 
 
+# Reading country list with capital from country_list.txt file and adding it to the sqlite database
 with open('country_list.txt', 'r', encoding="utf-8") as csvfile:
+    # converting string to comma seperated values
     csv_reader = csv.reader(csvfile, delimiter=",")
-    df1 = pd.DataFrame(csv_reader, columns=['Country', 'Capital', 'temp'])
-    df1['Capital'] = np.where(df1['temp'].isnull(
-    ), df1['Capital'], df1['Capital']+'('+df1['temp']+')')
-    df1 = df1.drop(columns=['temp'])
-    df1.to_sql('country', con=db.engine, index=False, if_exists='replace')
+    # converting comma seperated value to dataframe i.e to tabular form with columns Country, Capital and temp
+    df = pd.DataFrame(csv_reader, columns=['Country', 'Capital', 'temp'])
+    # Concatenating column temp with Capital only when temp has value
+    df['Capital'] = np.where(df['temp'].isnull(
+    ), df['Capital'], df['Capital']+'('+df['temp']+')')
+    # Dropping column temp
+    df = df.drop(columns=['temp'])
+    # insert bulk data frame value to database
+    df.to_sql('country', con=db.engine, index=False, if_exists='replace')
 csvfile.close()
 
 # entry point to run the application
