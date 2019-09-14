@@ -50,6 +50,17 @@ In future if country and capital data get change we just need to copy & paste th
  - **To run in Production (UNIX based)**
   `gunicorn app:app`
 
+## Unit Testing
+Flask provides a way to test your application by exposing the Werkzeug test and handling the context locals for us.
+### *Test cases*
+|  S.NO| Test Case|
+|--|--|
+| 1|Testing the index page response  |
+| 2| Testing country capital response |
+| 3| Testing country capital from post method and redirect check|
+| 4| Testing incorrect counry name |
+
+
 ## Dependency
 |dependency|version|
 |--|--|
