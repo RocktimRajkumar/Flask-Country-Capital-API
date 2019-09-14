@@ -47,6 +47,8 @@ with open('country_list.txt', 'r', encoding="utf-8") as csvfile:
     ), df['Capital'], df['Capital']+'('+df['temp']+')')
     # Dropping column temp
     df = df.drop(columns=['temp'])
+    # Dropping rows with null value or without capital
+    df.dropna(inplace=True)
     # adding id column with range from 0 to no of rows
     df.insert(0, 'id', range(0, 0+len(df)))
     # insert bulk data frame value to database
