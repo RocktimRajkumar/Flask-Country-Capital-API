@@ -11,6 +11,13 @@ class CountryCapitalTestCase(unittest.TestCase):
         response = tester.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
+    # testing correct country capital returning
+    def test_country_capital(self):
+        tester = app.test_client(self)
+        response = tester.get('/capital/India', content_type='html/text')
+        self.assertTrue(b'New Delhi' in response.data)
+        
+
 
 # test case entry point
 if __name__ == '__main__':
