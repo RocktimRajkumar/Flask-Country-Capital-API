@@ -17,7 +17,11 @@ class CountryCapitalTestCase(unittest.TestCase):
         response = tester.get('/capital/India', content_type='html/text')
         self.assertTrue(b'New Delhi' in response.data)
         
-
+    # testing country capital from post method and redirect check
+    def test_post_country_redirect(self):
+        tester = app.test_client(self)
+        response = tester.post('/capital', json={"country":"Germany"}, follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
 
 # test case entry point
 if __name__ == '__main__':
