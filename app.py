@@ -77,7 +77,10 @@ def capital():
 # api to get single country capital
 @app.route('/capital/<country>', methods=['GET'])
 def get_capital(country):
+
     capital = Country.query.filter(Country.Country == country)
+    capital.first_or_404(
+        description='There is no Country with name {}'.format(country))
     return country_schema.jsonify(capital)
 
 
