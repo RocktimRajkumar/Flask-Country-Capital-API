@@ -14,19 +14,14 @@ $(document).ready(function () {
                 country: $("#country").val()
             }),
             success: function (response) {
-                if (response.length > 0) {
-                    // removing alert and adding record to table
-                    $('.alert').fadeOut();
-                    $('#tbody').html('<tr><td>' + response[0]['Capital'] + '</td><td>' + response[0]['Country'] + '</td></tr>');
-                }
-                else {
-                    // removing record from table and showing alert
-                    $('#tbody').html('');
-                    $('.alert').fadeIn();
-                }
+                // removing alert and adding record to table
+                $('.alert').fadeOut();
+                $('#tbody').html('<tr><td>' + response[0]['Capital'] + '</td><td>' + response[0]['Country'] + '</td></tr>');
             },
             error: function (error) {
-                console.log(error);
+                // removing record from table and showing alert
+                $('#tbody').html('');
+                $('.alert').fadeIn();
             }
         });
 
