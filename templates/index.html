@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Country</title>
-</head>
-<body>
-    <h1>Hello</h1>
-</body>
-</html>
+{% extends 'layout.html' %}
+{% block head %}
+<title>Country</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="d-flex justify-content-center align-items-center container">
+
+    <div class="row">
+        <form action="/capital" class="form-inline">
+            <label for="country" class="mr-sm-2">Country Name: </label>
+            <input type="text" class="form-control mb-2 mr-sm-2" name="country" id="country">
+            <button type="submit" class="btn btn-primary mb-2">Search</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
