@@ -56,7 +56,8 @@ csvfile.close()
 # mapping index url
 @app.route('/')
 def index():
-    return render_template('index.html')
+    capital = Country.query.all()
+    return render_template('index.html', countryList=capital)
 
 # api to get all country capital and take country input from user
 @app.route('/capital', methods=['POST', 'GET'])
