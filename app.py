@@ -31,6 +31,8 @@ with open('country_list.txt', 'r', encoding="utf-8") as csvfile:
     ), df['Capital'], df['Capital']+'('+df['temp']+')')
     # Dropping column temp
     df = df.drop(columns=['temp'])
+    # adding id column with range from 0 to no of rows
+    df.insert(0,'id',range(0,0+len(df)))
     # insert bulk data frame value to database
     df.to_sql('country', con=db.engine, index=False, if_exists='replace')
 csvfile.close()
@@ -40,6 +42,11 @@ csvfile.close()
 def index():
     return render_template('index.html')
 
+@app.route('/capital', methods=['POST', 'GET'])
+def capital():
+    capital = Country.query.all()
+    return capital
+
 # entry point to run the application
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
