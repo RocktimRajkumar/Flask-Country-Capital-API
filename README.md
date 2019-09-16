@@ -11,7 +11,7 @@ Given data for country and capital. To insert these data in sqlite db , so that 
  4. merging two column capital and temp where temp has value with `()
  5. removing column temp
  6. removing all empty row and country without capital
- 7. inserting column id with autoincremtn
+ 7. inserting column id with autoincrement
  8. converting dataframe into sql insert query
    ***code***
     
